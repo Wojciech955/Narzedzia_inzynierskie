@@ -11,7 +11,7 @@ def personnel_check():
         print("\tThe mechanic's name is", crew[2])
         print("\tThe navigator's name is", crew[3])
     except IndexError as e:
-        raise RocketNotReadyError('Crew is incomplete') from e
+        raise RocketNotReadyError('Crew is incomplete') from e 
 
 
 def fuel_check():
@@ -20,6 +20,7 @@ def fuel_check():
             print('Rocket is fueled in {}%' .format(fuel))
         else:
             raise Exception('Rocket isnt fully fueled, actual mount: {}%'.format(fuel))
+        #a co w przypadku 99%? Nie widzę problemu, żeby nie wystartować @TODO zweryfikować case prawie pełnego baku
     except Exception as e:
         raise RocketNotReadyError('Problem with fuel gauge') from e
 
@@ -42,6 +43,15 @@ def circuits_check():
             raise  Exception('End of circuits arent good')
     except Exception  as e:
         raise RocketNotReadyError('THere is a circut malfunction ') from e
+    
+def food_check():
+    try:
+        if (FoodsStorage == 100):
+            print('Food is full')
+        else:
+            raise Exception('Load more food')
+    except Exception as e:
+        raise RocketNotReadyError('There is food issue: ') from e
 
  
 
@@ -50,8 +60,9 @@ crew2 = ['John', 'Mary', 'Mike', 'Alex']
 crew3 = ['John', 'Mary']
 crews = [crew1, crew2, crew3]
 
-crew = random.choice(crews)
+crew = random.choice(crews) 
 fuel = random.randint(0,100)
+FoodsStorage = random.randint(0,100)
 check_list = [personnel_check, fuel_check, batteries_check, circuits_check]
 batteries = random.randint(0,100)
 CircuitsStart = random.choice([True, False])
