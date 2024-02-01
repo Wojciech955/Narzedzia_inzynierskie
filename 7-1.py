@@ -75,3 +75,4 @@ for check in check_list:
         check()
     except RocketNotReadyError as f:
         print('RocketNotReady exception: "{}", caused by "{}"'.format(f, f.__cause__))
+    print('hello world') #Added new print
